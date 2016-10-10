@@ -289,6 +289,21 @@ public static String Figura1 (JTable tabla){
         
          return aux;
 }
+
+public static String Figura2 (JTable tabla){
+    int m[][] = pasoDeDatos(tabla);
+        int nf = m.length;
+        int nc = m[0].length;
+        String aux="";
+        
+        aux = aux + Helper.recorridoHaciaArriba(m, 0, nf-1, 1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, 0, 0, nf/2);
+        aux = aux + Helper.recorridoHaciaAbajo(m, nc/2, 1, nf-1);
+        aux = aux + Helper.recorridoHaciaDerecha(m, nf-1, nc / 2, nc-1);
+        aux = aux + Helper.recorridoHaciaArriba(m, nc-1, nf-2, 0);
+        
+         return aux;
+}
 public static String recorridoZ (JTable tabla){
     int m[][] = pasoDeDatos(tabla);
         int nf = m.length;
