@@ -310,7 +310,7 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Recorrido Tres"/>
+                <StringItem index="0" value="recorrido 1"/>
                 <StringItem index="1" value="Recorrido Z"/>
                 <StringItem index="2" value="Recorrido M"/>
               </StringArray>

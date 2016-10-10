@@ -155,7 +155,7 @@ public class principal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 480, 60));
 
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Tres", "Recorrido Z", "Recorrido M" }));
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "recorrido 1", "Recorrido Z", "Recorrido M" }));
         jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
 
         tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
@@ -291,7 +291,7 @@ public class principal extends javax.swing.JFrame {
 
         switch (op) {
             case 0:
-           txtResultado.setText(Helper.recorridoTres(tblTablaInicial));
+           txtResultado.setText(Helper.Figura1(tblTablaInicial));
             break;
             case 1:
             txtResultado.setText(Helper.recorridoZ(tblTablaInicial));
