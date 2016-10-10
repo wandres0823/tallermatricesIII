@@ -55,8 +55,6 @@ public class principal extends javax.swing.JFrame {
         cmdLlenadoAutomatico = new javax.swing.JButton();
         cmdOperacion = new javax.swing.JButton();
         cmdLimpiar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblTablaResultado = new javax.swing.JTable();
         cmbOperaciones = new javax.swing.JComboBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTablaInicial = new javax.swing.JTable();
@@ -97,7 +95,7 @@ public class principal extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 350, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 350, 60));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 350, 60));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Acciones"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -155,22 +153,10 @@ public class principal extends javax.swing.JFrame {
         });
         jPanel4.add(cmdLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 80, 480, 60));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, 480, 60));
 
-        tblTablaResultado.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tblTablaResultado);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 360, 210));
-
-        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Uno", "Recorrido Dos", "Recorrido Tres", "Recorrido Z", "Recorrido M" }));
-        jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, -1));
+        cmbOperaciones.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Recorrido Tres", "Recorrido Z", "Recorrido M" }));
+        jPanel1.add(cmbOperaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, -1, -1));
 
         tblTablaInicial.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,21 +180,21 @@ public class principal extends javax.swing.JFrame {
 
         jPanel6.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 440, -1));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, 480, 140));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 480, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 997, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 28, Short.MAX_VALUE))
         );
 
         pack();
@@ -216,19 +202,18 @@ public class principal extends javax.swing.JFrame {
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
         int nf, nc;
-        DefaultTableModel tm, tm2;
+        DefaultTableModel tm;
 
         nf = Integer.parseInt(txtNumerodeFilas.getText());
         nc = Integer.parseInt(txtNumerodeColumnas.getText());
 
         tm = (DefaultTableModel) tblTablaInicial.getModel();
-        tm2 = (DefaultTableModel) tblTablaResultado.getModel();
+        
 
         tm.setRowCount(nf);
         tm.setColumnCount(nc);
 
-        tm2.setRowCount(nf);
-        tm2.setColumnCount(nc);
+        
 
         JButton botonesH[]={cmdLlenadoManual,cmdLlenadoAutomatico, cmdLimpiar};
         JButton botonesD[]={cmdCrear, cmdOperacion};
@@ -263,7 +248,7 @@ public class principal extends javax.swing.JFrame {
                             j = nc;
 
                             Helper.porDefectoTabla(tblTablaInicial);
-                            Helper.porDefectoTabla(tblTablaResultado);
+                            
                         } else {
                             sw = 0;
                         }
@@ -300,24 +285,18 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_cmdLlenadoAutomaticoActionPerformed
 
     private void cmdOperacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdOperacionActionPerformed
-        int op, cantPares;
+        int op  ;
         op = cmbOperaciones.getSelectedIndex();
-        Helper.limpiadoTabla(tblTablaResultado);
+        
 
         switch (op) {
             case 0:
-            txtResultado.setText(Helper.recorridoUno(tblTablaInicial));
+           txtResultado.setText(Helper.recorridoTres(tblTablaInicial));
             break;
             case 1:
-            txtResultado.setText(Helper.recorridoDos(tblTablaInicial));
-            break;
-            case 2:
-            txtResultado.setText(Helper.recorridoTres(tblTablaInicial));
-            break;
-            case 3:
             txtResultado.setText(Helper.recorridoZ(tblTablaInicial));
             break;
-            case 4:
+            case 2:
             txtResultado.setText(Helper.recorridoM(tblTablaInicial));
             break;
 
@@ -339,7 +318,7 @@ public class principal extends javax.swing.JFrame {
         txtResultado.setText("");
 
         Helper.porDefectoTabla(tblTablaInicial);
-        Helper.porDefectoTabla(tblTablaResultado);
+            
 
         JButton botonesH[]={cmdCrear, cmdLimpiar};
         JButton botonesD[]={cmdLlenadoManual,cmdLlenadoAutomatico,cmdOperacion};
@@ -403,11 +382,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblTablaInicial;
-    private javax.swing.JTable tblTablaResultado;
     private javax.swing.JTextField txtNumerodeColumnas;
     private javax.swing.JTextField txtNumerodeColumnas1;
     private javax.swing.JTextField txtNumerodeColumnas3;
